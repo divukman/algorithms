@@ -42,6 +42,23 @@ public class Fibonacci {
        }
     }
 
+    public static void printWhileLoop(final int limit) {
+        int num1 = 0;
+        int num2 = 1;
+
+        System.out.print(num1 + " ");
+        System.out.print(num2 + " ");
+
+        int i = 1;
+        while (i < limit) {
+            int sum = num1 + num2;
+            System.out.print(sum + " ");
+            num1 = num2;
+            num2 = sum;
+            i++;
+        }
+    }
+
 
     public static void main(final String args[]) {
         final Scanner scanner = new Scanner(System.in);
@@ -53,6 +70,14 @@ public class Fibonacci {
         long ts1 = System.currentTimeMillis();
         printWithLoop(limit);
         long ts2 = System.currentTimeMillis();
+        System.out.println();
+        System.out.println("-----------------------------");
+        System.out.print((ts2 - ts1) + "ms");
+
+        System.out.println();
+        System.out.println("Printing with while loop...");
+        ts1 = System.currentTimeMillis();
+        printWhileLoop(limit);
         System.out.println();
         System.out.println("-----------------------------");
         System.out.print((ts2 - ts1) + "ms");
