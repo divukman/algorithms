@@ -67,10 +67,10 @@ public class LongestSubstringNoRepeat {
       final String str = "dvdf";//3
         final String str2 = "abcabcbb"; //3
         final String str3 = "bbbbb"; //1*/
-        final String str4 = "pwwkew"; //3
-        System.out.println(str +": 3? :" + LongestSubstringNoRepeat.lengthOfLongestSubstring(str));
-        System.out.println(str2 +": 3? :" + LongestSubstringNoRepeat.lengthOfLongestSubstring(str2));
-        System.out.println(str3 +": 1? :" + LongestSubstringNoRepeat.lengthOfLongestSubstring(str3));
-        System.out.println(str4 +": 3? :" + LongestSubstringNoRepeat.lengthOfLongestSubstring(str4));
+        final String str4 = "pwwkeww"; //3
+        System.out.println(str +": 3? :" + (LongestSubstringNoRepeat.lengthOfLongestSubstring(str) == 3));
+        System.out.println(str2 +": 3? :" + (LongestSubstringNoRepeat.lengthOfLongestSubstring(str2) == 3));
+        System.out.println(str3 +": 1? :" + (LongestSubstringNoRepeat.lengthOfLongestSubstring(str3) == 1));
+        System.out.println(str4 +": 3? :" + (LongestSubstringNoRepeat.lengthOfLongestSubstring(str4) == 3));
     }
 }
