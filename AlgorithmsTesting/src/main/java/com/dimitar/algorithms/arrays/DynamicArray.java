@@ -2,6 +2,8 @@ package com.dimitar.algorithms.arrays;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+
 @Slf4j
 public class DynamicArray <T> implements Array <T> {
     private Object[] data;
@@ -39,17 +41,28 @@ public class DynamicArray <T> implements Array <T> {
 
     @Override
     public void delete(int index) {
-
+        if (index >= 0 && index < data.length) {
+            for (int i = index; i < size - 1; i++) {
+                data[i] = data[i+1];
+            }
+            data[size-1] = null;
+            size--;
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public boolean Contains(T value) {
-        return false;
+        return Arrays.stream(data).filter(o -> o.equals(value)).count() > 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
     }
 
     /***

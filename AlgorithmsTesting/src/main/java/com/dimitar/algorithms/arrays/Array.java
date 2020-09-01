@@ -9,5 +9,5 @@ public interface Array <T> {
     void delete (int index);
     boolean isEmpty();
     boolean Contains(T value);
-
+    int size();
 }

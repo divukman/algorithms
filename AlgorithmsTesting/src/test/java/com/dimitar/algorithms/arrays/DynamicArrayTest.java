@@ -30,6 +30,31 @@ public class DynamicArrayTest extends TestCase {
         log.info("testGet passed :P");
     }
 
+    public void testAdd() {
+        final DynamicArray<String> dynamicArray = new DynamicArray<>(2);
+        dynamicArray.add("MATE");
+        dynamicArray.add("MISO");
+        dynamicArray.add("KOVAC");
+        dynamicArray.add("ELVIS");
+        dynamicArray.add("NEBO");
+        dynamicArray.add("SA");
+        dynamicArray.add("ZEMLJOM");
+        dynamicArray.add("SPOJENO");
+
+        for (int i = 0; i < dynamicArray.size(); i++) {
+            System.out.print(dynamicArray.get(i) + " ");
+        }
+
+        System.out.println("DELETE");
+        dynamicArray.delete(0);
+        dynamicArray.delete(7);
+        dynamicArray.delete(3);
+        for (int i = 0; i < dynamicArray.size(); i++) {
+            System.out.print(dynamicArray.get(i) + " ");
+        }
+
+    }
+
     public void testTestGet() {
     }
 
@@ -37,6 +62,7 @@ public class DynamicArrayTest extends TestCase {
     }
 
     public void testInsert() {
+
     }
 
     public void testDelete() {
