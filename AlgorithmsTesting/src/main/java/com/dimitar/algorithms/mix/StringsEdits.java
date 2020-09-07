@@ -53,6 +53,10 @@ public class StringsEdits {
             }
         }
 
+        if (!result) { //throw away palindromes
+            result = (str1.length() == str2.length()) && !str1.equals(str2);
+        }
+
         return result;
     }
 
@@ -61,5 +65,6 @@ public class StringsEdits {
         System.out.println(oneAway("pale", "ple"));
         System.out.println(oneAway("pales", "pale"));
         System.out.println(oneAway("Mate", "Mate"));
+        System.out.println(oneAway("miki", "kimi"));
     }
 }
