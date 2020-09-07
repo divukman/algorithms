@@ -43,9 +43,45 @@ public class StringCompress {
         return result;
     }
 
+
+    public static String compress2(final String str) {
+        String result = null;
+
+        final StringBuffer stringBuffer = new StringBuffer();
+        int ptr = 0;
+        int counter = 0;
+
+        if (str == null) return "";
+        if (str.length() == 1) return str;
+
+        // string length 2+
+        do {
+            counter++;
+            while ( (ptr + 1 < str.length()) && str.charAt(ptr + 1) == str.charAt(ptr) ) {
+                counter++;
+                ptr++;
+            }
+
+            stringBuffer.append(str.charAt(ptr));
+            stringBuffer.append(String.valueOf(counter));
+            counter = 0;
+            ptr++;
+        } while (ptr < str.length());
+
+        result = str.length() > stringBuffer.toString().length() ? stringBuffer.toString() : str;
+
+        return result;
+    }
+
     public static void main(String[] args) {
        System.out.println("aaabb to a3b2 -> " + compress("aaabb") );
        System.out.println("aaabbcaaad to a3b2c1a3d1 -> " + compress("aaabbcaaad") );
        System.out.println("aaabbcaaaddd to a3b2c1a3d3 -> " + compress("aaabbcaaaddd") );
+
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("aaabb to a3b2 -> " + compress2("aaabb") );
+        System.out.println("aaaab to a4b1 -> " + compress2("aaaab") );
+        System.out.println("aaabbcaaad to a3b2c1a3d1 -> " + compress2("aaabbcaaad") );
+        System.out.println("aaabbcaaaddd to a3b2c1a3d3 -> " + compress2("aaabbcaaaddd") );
     }
 }
