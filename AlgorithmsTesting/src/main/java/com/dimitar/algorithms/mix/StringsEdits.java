@@ -44,13 +44,16 @@ public class StringsEdits {
 
         // 2. Delta has to be exactly one or zero for one or zero edits away
         final String longerStr = str1.length() > str2.length() ? str1 : str2;
+        final String shorterStr = str1.length() < str2.length() ? str1 : str2;
 
         int delta = 0;
+        Character deltaKey = null;
         for (int i = 0; i < longerStr.length(); i++) {
             final Character key = longerStr.charAt(i);
             final int counter1 = hashMap1.containsKey(key) ? hashMap1.get(key) : 0;
             final int counter2 = hashMap2.containsKey(key) ? hashMap2.get(key) : 0;
             delta += Math.abs(counter1 - counter2);
+            if (delta == 1) deltaKey = key;
             if (delta > 1) break;
         }
 
@@ -59,6 +62,11 @@ public class StringsEdits {
         }
 
         if (delta == 0 && !str1.equals(str2)) return false;
+
+        if (delta == 1) {
+            String replaced = longerStr.replace(deltaKey.toString(), "");
+            if (!replaced.equals(shorterStr)) return false;
+        }
 
 
         return true;
@@ -70,5 +78,7 @@ public class StringsEdits {
         System.out.println(oneAway("pales", "pale"));
         System.out.println(oneAway("Mate", "Mate"));
         System.out.println(oneAway("miki", "kimi"));
+
+        System.out.println(oneAway("ABCD", "BACDG"));
     }
 }
