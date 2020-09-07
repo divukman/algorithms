@@ -32,7 +32,9 @@ public class StringsEdits {
     }
 
     public static boolean oneAway(final String str1, final String str2) {
-        boolean result = false;
+
+        // 1. If string length diff is more than 1 character, its more than one edit away, return false
+        if ( Math.abs(str1.length() - str2.length()) > 1) return false;
 
         final HashMap<Character, Integer> hashMap1 = new HashMap<>();
         final HashMap<Character, Integer> hashMap2= new HashMap<>();
@@ -40,24 +42,26 @@ public class StringsEdits {
         buildHashMap(hashMap1, str1);
         buildHashMap(hashMap2, str2);
 
-        // Now loop longer string
+        // 2. Delta has to be exactly one or zero for one or zero edits away
         final String longerStr = str1.length() > str2.length() ? str1 : str2;
+
+        int delta = 0;
         for (int i = 0; i < longerStr.length(); i++) {
             final Character key = longerStr.charAt(i);
             final int counter1 = hashMap1.containsKey(key) ? hashMap1.get(key) : 0;
             final int counter2 = hashMap2.containsKey(key) ? hashMap2.get(key) : 0;
-            final int delta = Math.abs(counter1 - counter2);
-            if (delta >= 1) {
-                result = true;
-                break;
-            }
+            delta += Math.abs(counter1 - counter2);
+            if (delta > 1) break;
         }
 
-        if (!result) { //throw away palindromes
-            result = (str1.length() == str2.length()) && !str1.equals(str2);
+        if (delta > 1) {
+            return false;
         }
 
-        return result;
+        if (delta == 0 && !str1.equals(str2)) return false;
+
+
+        return true;
     }
 
     public static void main(String[] args) {
