@@ -3,6 +3,9 @@ package com.dimitar.algorithms.mix;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * Sum numbers via stack.
+ */
 public class StackAdd {
 
     public static Stack<Integer> addStacks(final Stack<Integer> stackA, final Stack<Integer> stackB) {
@@ -22,20 +25,29 @@ public class StackAdd {
         int ptrA = listA.size() - 1;
         int ptrB = listB.size() - 1;
 
+        int carry = 0;
         do {
-            int sum = 0;
+            int noA = 0;
+            int noB = 0;
             if (ptrA >= 0) {
-                sum+= listA.get(ptrA);
+                noA = listA.get(ptrA);
                 ptrA--;
             }
 
             if (ptrB >= 0) {
-                sum+= listB.get(ptrB);
+                noB = listB.get(ptrB);
                 ptrB--;
             }
 
-            result.push(sum);
+            int divideResult = (noA + noB + carry) % 10;
+            carry = (noA + noB + carry) / 10;
+
+            result.push(divideResult);
         } while (ptrA >= 0 || ptrB >= 0);
+
+        if (carry > 0) {
+            result.push(carry);
+        }
 
 
         return result;
@@ -45,11 +57,11 @@ public class StackAdd {
         Stack<Integer> stackA = new Stack<>();
         Stack<Integer> stackB = new Stack<>();
 
-        stackA.push(1);
-        stackA.push(3);
-        stackA.push(4);
+        stackA.push(9);
+        stackA.push(9);
+        stackA.push(9);
 
-        stackB.push(7);
+        stackB.push(2);
         stackB.push(2);
 
         Stack<Integer> resultStack = addStacks(stackA, stackB);
