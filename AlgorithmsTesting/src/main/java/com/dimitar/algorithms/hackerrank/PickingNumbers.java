@@ -31,6 +31,7 @@ public class PickingNumbers {
                 int delta = Math.abs(arr[j] - arr[i]);
                 if (delta <= 1) {
                     count++;
+                    max = max > count ? max : count;
                 } else {
                     max = max > count ? max : count;
                     break;
