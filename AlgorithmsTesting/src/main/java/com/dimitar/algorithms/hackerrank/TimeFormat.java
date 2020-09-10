@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class TimeFormat {
 
     public static String leftPadZeros(String input) {
-        if (input.length() == 2) return input;
+        if (input.length() >= 2) return input;
         else return leftPadZeros("0"+input);
     }
 
