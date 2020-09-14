@@ -1,5 +1,6 @@
 package com.dimitar.algorithms.mix;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class StringPermutationCheck {
@@ -38,12 +39,22 @@ public class StringPermutationCheck {
         return result;
     }
 
+    public static boolean isPermutationOf2(final String str1, final String str2) {
+        if (str1 == null || str2 == null || str1.length() != str2.length()) return false; // safety check
+        final char[] array1 = str1.toCharArray();
+        final char[] array2 = str2.toCharArray();
+        Arrays.sort(array1);
+        Arrays.sort(array2);
+        return new String (array1).equalsIgnoreCase(new String(array2));
+    }
+
+
     public static void main(String[] args) {
-        System.out.println("MATE, TEMA: isPermutation: " + isPermutationOf("MATE", "TEMA"));
-        System.out.println("MATE, METEA: isPermutation: " + isPermutationOf("MATE", "MATEA"));
-        System.out.println("MAT2, T2MA: isPermutation: " + isPermutationOf("MAT2", "T2MA"));
-        System.out.println("MAT2, T3MA: isPermutation: " + isPermutationOf("MAT2", "T3MA"));
-        System.out.println("TUTI, FRUTI: isPermutation: " + isPermutationOf("TUTI", "FRUTI"));
-        System.out.println("matemisokovac, kovacmatemiso: isPermutation: " + isPermutationOf("matemisokovac", "kovacmatemiso"));
+        System.out.println("MATE, TEMA: isPermutation: " + isPermutationOf2("MATE", "TEMA"));
+        System.out.println("MATE, METEA: isPermutation: " + isPermutationOf2("MATE", "MATEA"));
+        System.out.println("MAT2, T2MA: isPermutation: " + isPermutationOf2("MAT2", "T2MA"));
+        System.out.println("MAT2, T3MA: isPermutation: " + isPermutationOf2("MAT2", "T3MA"));
+        System.out.println("TUTI, FRUTI: isPermutation: " + isPermutationOf2("TUTI", "FRUTI"));
+        System.out.println("matemisokovac, kovacmatemiso: isPermutation: " + isPermutationOf2("matemisokovac", "kovacmatemiso"));
     }
 }
