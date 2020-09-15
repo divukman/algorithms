@@ -6,6 +6,23 @@ import java.util.HashMap;
  * https://leetcode.com/problems/number-of-nodes-in-the-sub-tree-with-the-same-label/
  *
  * @todo: works fine on PC, stack overflow on submit
+ * NB Algorithm is more or less sound (could go from back N-1 to zero for hash),
+ * this is what they provide for an matrix
+ *
+ *
+ * 4
+ * [[0,1],[1,2],[0,3]]
+ * "bbbb"
+ * on mapira ovako
+ * INPUT : i : 0 j: 0 VAL: 0
+ * INPUT : i : 0 j: 1 VAL: 1
+ * INPUT : i : 1 j: 0 VAL: 1
+ * INPUT : i : 1 j: 1 VAL: 2
+ * INPUT : i : 2 j: 0 VAL: 0
+ * INPUT : i : 2 j: 1 VAL: 3
+ *
+ *
+ * I have no idea how they come up with this input. With proper input, recursions are good. Leaving it as is.
  */
 public class NodesSubtree {
 
@@ -47,9 +64,19 @@ public class NodesSubtree {
     }
 
     public static int[] countSubTrees(int n, int[][] edges, String labels) {
+
+
+        for (int i = 0; i < edges.length; i++) {
+            int arr[] = edges[i];
+            for (int j = 0; j < arr.length; j++) {
+                System.out.println("INPUT : i : " + i + " VAL: " + arr[j]);
+            }
+        }
+
         int [] result = new int[labels.length()];
 
         for (int i = 0; i < labels.length(); i++) {
+
             result[i] = countRec(i, edges, labels, labels.charAt(i));
         }
 
