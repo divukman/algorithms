@@ -94,4 +94,15 @@ public class BinaryTree <T extends Comparable<T>> {
 
         return currentNode;
     }
+
+    public void traversePreOrderRoot(StringBuilder stringBuilder) {
+        traversePreOrder(root, stringBuilder);
+    }
+
+    private void traversePreOrder(Node node, StringBuilder stringBuilder) {
+        if (node == null) return;
+        stringBuilder.append(node.value);
+        traversePreOrder(node.left, stringBuilder);
+        traversePreOrder(node.right, stringBuilder);
+    }
 }
