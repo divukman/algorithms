@@ -5,7 +5,8 @@ import java.util.HashMap;
 /**
  * https://leetcode.com/problems/three-consecutive-odds/
  */
-public class ThreeConsecutiveOdds {
+public class
+ThreeConsecutiveOdds {
 
     public static boolean threeConsecutiveOdds(int[] arr) {
         final HashMap<Integer, Boolean> hashMap = new HashMap<>(arr.length);
