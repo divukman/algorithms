@@ -3,6 +3,9 @@ package com.dimitar.algorithms.mix;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * Permutation detector.
+ */
 public class Perm {
 
     private static void populateHashCounters(final String str, final HashMap<Character, Integer> hashMap) {
