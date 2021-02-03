@@ -109,5 +109,34 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         }
     }
 
+    public void removeDuplicates() {
+
+        if (head != null) {
+            Node firstNode = head;
+            Node movingNode = head;
+
+           do {
+               T value = (T) firstNode.data;
+               movingNode = firstNode;
+               while (movingNode != null && movingNode.next != null) {
+                   if (movingNode.next.data.equals(value)) {
+                       movingNode.next = movingNode.next.next;
+                   }
+                   movingNode = movingNode.next;
+               }
+               firstNode = firstNode.next;
+
+           } while (firstNode!= null && firstNode.next != null);
+        }
+    }
+
+    public void print() {
+        Node ptr = head;
+        do {
+            System.out.println(ptr.data + " ");
+            ptr = ptr.next;
+        } while (ptr != null);
+    }
+
 
 }
