@@ -38,7 +38,7 @@ public class NewLinkedListImpl <T> implements NewLinkedList<T> {
 
     @Override
     public T getFirst() {
-        return head != null ? (T) head.data : null;
+        return head != null ? (T) head.data : null; //@todo: ? throw IllegalStateException("Empty List!") ? create a separate method for that
     }
 
     @Override
