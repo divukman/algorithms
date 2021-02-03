@@ -1,5 +1,7 @@
 package com.dimitar.algorithms.linkedlist;
 
+import java.util.HashSet;
+
 public class NewLinkedListImpl <T> implements NewLinkedList<T> {
 
     private Node head = null;
@@ -103,6 +105,25 @@ public class NewLinkedListImpl <T> implements NewLinkedList<T> {
                 System.out.print(ptr.data + " ");
                 ptr = ptr.next;
             } while (ptr != null);
+        }
+    }
+
+    public void deleteDuplicates() {
+        if (head != null && head.next != null) {
+            Node ptr = head;
+            HashSet<T> hashSet = new HashSet<>();
+            hashSet.add((T) ptr.data);
+
+            while(ptr != null && ptr.next != null) { // While I do have next
+                if ( hashSet.contains((T) ptr.next.data) ) {
+                    // remove it
+                    ptr.next = ptr.next.next;
+                } else {
+                    // not duplicate
+                    ptr = ptr.next;
+                    hashSet.add((T) ptr.data);
+                }
+            }
         }
     }
 }
