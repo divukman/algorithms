@@ -5,6 +5,7 @@ import java.util.HashSet;
 public class NewLinkedListImpl <T> implements NewLinkedList<T> {
 
     private Node head = null;
+    private Node tail = null;
 
 
     private static class Node <T> {
