@@ -16,6 +16,21 @@ public class StringReverse {
         return buffer.toString();
     }
 
+    public static String reverse2(final String str) {
+        final char[] arr = str.toCharArray();
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        for (; left < right; left++, right--) {
+            final char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+        }
+
+        return new String(arr);
+    }
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a string: ");
@@ -23,6 +38,6 @@ public class StringReverse {
 
         System.out.println("Reversed string: ");
         System.out.println("-------------------------------");
-        System.out.println(reverse(str));
+        System.out.println(reverse2(str));
     }
 }
