@@ -36,6 +36,18 @@ public class Bubble {
         }
     }
 
+    public static void sort4(final int [] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int tmp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = tmp;
+                }
+            }
+        }
+    }
+
     private static void printArr(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
@@ -49,7 +61,7 @@ public class Bubble {
         System.out.println();
         System.out.println(" *** *** ***");
         System.out.println("Sorted arr: ");
-        sort3(arr);
+        sort4(arr);
         printArr(arr);
     }
 }
