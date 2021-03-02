@@ -1,5 +1,6 @@
 package com.dimitar.algorithms.mix;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -43,6 +44,59 @@ public class Anagram {
         });
     }
 
+
+    public static boolean isAnagram2(final String str1, final String str2) {
+        boolean result = true;
+
+        if (str1 == null || str2 == null || str1.length() != str2.length()) {
+            result = false;
+        } else {
+            final HashMap<Character, Integer> hash1 = new HashMap<>();
+            final HashMap<Character, Integer> hash2 = new HashMap<>();
+
+            for (int i = 0; i < str1.length(); i++) {
+                final Character character = str1.charAt(i);
+                final int count = hash1.getOrDefault(character, 0);
+                hash1.put(character, count + 1);
+            }
+
+            for (int i = 0; i < str2.length(); i++) {
+                final Character character = str2.charAt(i);
+                final int count = hash2.getOrDefault(character, 0);
+                hash2.put(character, count + 1);
+            }
+
+            // Check the hashes
+            for (int i = 0; i < str1.length(); i++) {
+                if (hash1.get(str1.charAt(i)) != hash2.get(str1.charAt(i))) {
+                    result = false;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+    public static boolean isAnagramHack(final String str1, final String str2) {
+        boolean result = true;
+
+        if (str1 == null || str2 == null || str1.length() != str2.length()) {
+            result = false;
+        } else {
+            final char[] arr1 = str1.toCharArray();
+            final char[] arr2 = str2.toCharArray();
+
+            Arrays.sort(arr1);
+            Arrays.sort(arr2);
+
+            result = Arrays.equals(arr1, arr2);
+        }
+
+        return result;
+    }
+
     public static void main(final String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
@@ -53,6 +107,6 @@ public class Anagram {
         final String str2 = scanner.nextLine();
 
         System.out.println("--------------------------");
-        System.out.println("Strings ara anagrams: " + isAnagram(str1, str2));
+        System.out.println("Strings ara anagrams: " + isAnagramHack(str1, str2));
     }
 }
