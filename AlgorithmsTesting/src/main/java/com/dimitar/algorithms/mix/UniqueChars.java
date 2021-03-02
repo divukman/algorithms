@@ -23,10 +23,27 @@ public class UniqueChars {
         return result;
     }
 
+    public static boolean hasUnique2(final String str) {
+        boolean result = true;
+
+        final HashMap<Character, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            final Character character = str.charAt(i);
+            final int counter = hashMap.getOrDefault(character, 0);
+            if (counter > 0) {
+                result = false;
+                break;
+            }
+            hashMap.put(character, counter + 1);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println("ABC DEF : " + hasUniqueChars("ABC DEF"));
-        System.out.println("ABC ABC : " + hasUniqueChars("ABC ABC"));
-        System.out.println("MATEVOLIWHYSK: " + hasUniqueChars("MATEVOLIWHYSK"));
-        System.out.println("MATEVOLIWHYSKI: " + hasUniqueChars("MATEVOLIWHYSKI"));
+        System.out.println("ABC DEF : " + hasUnique2("ABC DEF"));
+        System.out.println("ABC ABC : " + hasUnique2("ABC ABC"));
+        System.out.println("MATEVOLIWHYSK: " + hasUnique2("MATEVOLIWHYSK"));
+        System.out.println("MATEVOLIWHYSKI: " + hasUnique2("MATEVOLIWHYSKI"));
     }
 }

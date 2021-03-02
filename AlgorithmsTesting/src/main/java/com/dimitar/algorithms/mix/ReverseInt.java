@@ -1,5 +1,7 @@
 package com.dimitar.algorithms.mix;
 
+import java.util.Stack;
+
 public class ReverseInt {
 
     /**
@@ -56,9 +58,33 @@ public class ReverseInt {
 
     }
 
+    public static int reverseStack(final int num) {
+        final boolean isNegative = num < 0;
+        int num2 = Math.abs(num);
+        int result = 0;
+
+        final Stack<Integer> stack = new Stack<Integer>();
+        int divResult = 0;
+        int tempNum = num2;
+        do  {
+            divResult = tempNum / 10;
+            int reminder = tempNum % 10;
+            tempNum = divResult;
+
+            stack.push(reminder);
+        } while (divResult > 0);
+
+        int size = stack.size();
+        for (int i = 0; i < size; i++) {
+            result += stack.pop() * Math.pow(10,i);
+        }
+
+        return isNegative ? result * -1 : result;
+    }
+
     public static void main(String[] args) {
-        System.out.println(reverse2(123));
-        System.out.println(reverse2(254));
-        System.out.println(reverse2(-1123));
+       // System.out.println(reverse2(123));
+        System.out.println(reverseStack(254));
+        System.out.println(reverseStack(-1123));
     }
 }
