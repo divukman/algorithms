@@ -34,7 +34,31 @@ public class ReverseInt {
         return result;
     }
 
+
+    public static int reverse2(final int num) {
+        int num2 = Math.abs(num);
+
+        int result = 0;
+
+        int divResult = 0;
+        int divReminder = 0;
+
+        int currentNum = num2;
+        do {
+            divResult = currentNum / 10;
+            divReminder = currentNum % 10;
+            currentNum = divResult;
+
+            result = (result * 10) + divReminder;
+        } while (divResult > 0);
+
+        return num > 0 ? result : result * -1;
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(reverse(123));
+        System.out.println(reverse2(123));
+        System.out.println(reverse2(254));
+        System.out.println(reverse2(-1123));
     }
 }
