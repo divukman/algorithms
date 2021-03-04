@@ -25,8 +25,24 @@ public class URLIfy {
        return result;
     }
 
+    public static String urlify3(final String str) {
+        StringBuilder stringBuilder = new StringBuilder();
+        final String SPACE = "%20";
+
+        for (int i = 0; i < str.length(); i++) {
+            final Character character = str.charAt(i);
+            if (Character.isSpaceChar(character)) {
+                stringBuilder.append(SPACE);
+            } else {
+                stringBuilder.append(character);
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println("THIS IS A STRING: " + urlify("THIS IS A STRING"));
+        System.out.println("THIS IS A STRING: " + urlify3("THIS IS A STRING"));
         System.out.println("THIS IS A STRING: " + urlify2("THIS IS A STRING", 22));
     }
 }
