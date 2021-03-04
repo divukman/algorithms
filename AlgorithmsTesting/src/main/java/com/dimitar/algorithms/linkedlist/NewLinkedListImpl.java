@@ -127,4 +127,22 @@ public class NewLinkedListImpl <T> implements NewLinkedList<T> {
             }
         }
     }
+
+
+    public void deleteDuplicates2() {
+        Node ptr = head;
+        HashSet<T> hashSet = new HashSet<>();
+
+        hashSet.add((T)head.data);
+
+        while (ptr!=null && ptr.next != null) {
+            final T nextData = (T)ptr.next.data;
+            if (hashSet.contains(nextData)) {
+                ptr.next = ptr.next.next;
+            } else {
+                ptr = ptr.next;
+                hashSet.add(nextData);
+            }
+        }
+    }
 }

@@ -67,4 +67,24 @@ public class NewLinkedListImplTest extends TestCase {
         newLinkedList.deleteDuplicates();
         newLinkedList.printNodes();
     }
+
+    public void testDeleteDuplicates2() {
+        final NewLinkedListImpl<String> newLinkedList = new NewLinkedListImpl<>();
+
+        newLinkedList.addBack("Hello");
+        newLinkedList.addBack("World");
+        newLinkedList.addBack("!");
+        newLinkedList.addBack("Hello");
+        newLinkedList.addBack("World");
+        newLinkedList.addBack("!");
+        newLinkedList.addBack("World");
+        newLinkedList.addBack("World");
+        newLinkedList.addBack("World");
+
+        newLinkedList.printNodes();
+        System.out.println();
+        System.out.println(" --- ");
+        newLinkedList.deleteDuplicates2();
+        newLinkedList.printNodes();
+    }
 }
