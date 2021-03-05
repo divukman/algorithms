@@ -24,10 +24,38 @@ public class Compressor {
         return result;
     }
 
+
+    public static String compress2(final String str) {
+        if (str == null || str.length() < 1) {
+            return str;
+        }
+
+        final StringBuilder stringBuilder = new StringBuilder();
+        int counter = 0;
+
+        int ptr = 0;
+        final int size = str.length();
+
+        while (ptr < size) {
+            counter++;
+            final Character current = str.charAt(ptr);
+            while (ptr + 1 < size && current.equals(str.charAt(ptr + 1))) {
+                counter++;
+                ptr++;
+            }
+            stringBuilder.append(current);
+            stringBuilder.append(String.valueOf(counter));
+            counter = 0;
+            ptr++;
+        }
+
+        return str.length() < stringBuilder.toString().length() ? str : stringBuilder.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println(compress("aaaaaaa"));
-        System.out.println(compress("aabb"));
-        System.out.println(compress("aabbccdddf"));
-        System.out.println(compress("abcd"));
+        System.out.println(compress2("aaaaaaa"));
+        System.out.println(compress2("aabb"));
+        System.out.println(compress2("aabbccdddf"));
+        System.out.println(compress2("abcd"));
     }
 }
