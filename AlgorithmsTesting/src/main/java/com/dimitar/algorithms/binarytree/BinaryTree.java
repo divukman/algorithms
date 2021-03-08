@@ -105,4 +105,20 @@ public class BinaryTree <T extends Comparable<T>> {
         traversePreOrder(node.left, stringBuilder);
         traversePreOrder(node.right, stringBuilder);
     }
+
+
+
+    public void getPreOrderStringFromRoot(final StringBuilder stringBuilder) {
+        if (root != null) {
+            getPreOrderString(root, stringBuilder);
+        }
+    }
+
+    private void getPreOrderString(final Node node, final StringBuilder stringBuilder) {
+        if (node == null) return;
+        //root, left, right
+        stringBuilder.append(node.value + ", ");
+        getPreOrderString(node.left, stringBuilder);
+        getPreOrderString(node.right, stringBuilder);
+    }
 }
