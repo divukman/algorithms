@@ -1,5 +1,8 @@
 package com.dimitar.algorithms.temp;
 
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+
 public class Testing {
 
     public static void printArr(final int [] arr) {
@@ -8,7 +11,7 @@ public class Testing {
     }
 
     public static void main(String[] args) {
-        final int arr[] = { 7, 4, 9, 1, 3 };
+       /* final int arr[] = { 7, 4, 9, 1, 3 };
 
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -32,6 +35,11 @@ public class Testing {
                 System.out.println();
             }
             System.out.println();
-        }
+        }*/
+
+        OffsetDateTime offsetDT = OffsetDateTime.now();
+        System.out.println(offsetDT.toLocalDate());
+        System.out.println(offsetDT);
+        System.out.println(offsetDT.atZoneSameInstant(ZoneId.of("UTC")));
     }
 }
