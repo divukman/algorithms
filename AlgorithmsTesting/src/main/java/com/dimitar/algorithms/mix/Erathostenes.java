@@ -3,13 +3,14 @@ package com.dimitar.algorithms.mix;
 public class Erathostenes {
 
 
-    public static void printArr(final int [] arr) {
+    private static void printArr(final int [] arr) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != 0)
                 System.out.print(arr[i] + " ");
         }
     }
 
+    @Deprecated
     public static boolean isPrime(final int num) {
         boolean result = true;
         for (int i = 2; i < num; i++) {
@@ -21,7 +22,7 @@ public class Erathostenes {
         return result;
     }
 
-    public static void removeMultiplesOf(final int num, final int[] arr, final int startIndex) {
+    private static void removeMultiplesOf(final int num, final int[] arr, final int startIndex) {
         for(int i = startIndex; i < arr.length; i++) {
             if (arr[i] != 0 && arr[i] != 1 && arr[i] % num == 0) {
                 arr[i] = 0;
@@ -31,7 +32,7 @@ public class Erathostenes {
 
     public static void erathostenes(final int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            if ( arr[i] != 1 &&  arr[i] != 0 && isPrime(arr[i])) {
+            if ( arr[i] != 1 &&  arr[i] != 0) {
                 removeMultiplesOf(arr[i], arr, i + 1);
             }
         }
